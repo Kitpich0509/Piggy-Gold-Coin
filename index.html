@@ -1,96 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Piggy Gold Coin (PGGC)</title>
+  <link rel="icon" href="https://i.ibb.co/xjZpnDn/pggc-logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background: #f9f4f0;
-      color: #333;
       margin: 0;
-      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      color: #222;
     }
+
     header {
-      background-color: #ffcc00;
-      color: #000;
+      background: #FFD700;
       text-align: center;
-      padding: 20px;
+      padding: 40px 20px;
     }
-    .logo {
-      max-width: 120px;
+
+    header img {
+      width: 100px;
+      height: auto;
     }
-    section {
-      padding: 20px;
-      max-width: 700px;
-      margin: auto;
+
+    header h1 {
+      margin-top: 10px;
+      font-size: 32px;
     }
-    h2 {
-      color: #cc9900;
+
+    nav {
+      background: #333;
+      text-align: center;
     }
-    .button {
+
+    nav a {
+      color: white;
+      text-decoration: none;
       display: inline-block;
+      padding: 14px 20px;
+    }
+
+    nav a:hover {
+      background: #555;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #d4af37;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+    }
+
+    .button {
       background: #ff9900;
       color: white;
       padding: 12px 20px;
       margin: 10px 0;
+      display: inline-block;
       text-decoration: none;
       border-radius: 6px;
+      font-weight: bold;
     }
+
+    .socials a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #555;
+    }
+
     footer {
       text-align: center;
-      font-size: 12px;
-      color: #666;
-      margin: 40px 0 20px;
+      padding: 30px 20px;
+      color: #888;
+      font-size: 14px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <img src="https://i.ibb.co/xjZpnDn/pggc-logo.png" alt="PGGC Logo" class="logo">
-  <h1>Piggy Gold Coin (PGGC)</h1>
-  <p>🐷 A Meme Coin with Real Community</p>
-</header>
+  <header>
+    <img src="https://i.ibb.co/xjZpnDn/pggc-logo.png" alt="PGGC Logo">
+    <h1>Piggy Gold Coin (PGGC)</h1>
+    <p>🐷 Fun. Fair. Fast-growing BSC meme token.</p>
+  </header>
 
-<section>
-  <h2>🔗 Token Details</h2>
-  <p><strong>Token Name:</strong> Piggy Gold Coin</p>
-  <p><strong>Symbol:</strong> PGGC</p>
-  <p><strong>Total Supply:</strong> 10,000,000 PGGC</p>
-  <p><strong>Contract Address:</strong><br><code>[Your PGGC Contract Here]</code></p>
+  <nav>
+    <a href="#token">Token</a>
+    <a href="#buy">Buy</a>
+    <a href="#airdrop">Airdrop</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#community">Community</a>
+  </nav>
 
-  <h2>💱 Buy on PancakeSwap</h2>
-  <a href="[Your PancakeSwap Trade Link Here]" class="button">Buy PGGC Now</a>
+  <section id="token">
+    <h2>🔗 Token Details</h2>
+    <p><strong>Name:</strong> Piggy Gold Coin</p>
+    <p><strong>Symbol:</strong> PGGC</p>
+    <p><strong>Total Supply:</strong> 10,000,000 PGGC</p>
+    <p><strong>Contract Address:</strong><br><code>[YOUR_TOKEN_CONTRACT_ADDRESS]</code></p>
+  </section>
 
-  <h2>🔐 Liquidity Locked</h2>
-  <p>Liquidity is locked for 1 month for your safety and trust.</p>
-  <p><a href="[Your LP Lock Link]">View Lock Proof</a></p>
+  <section id="buy">
+    <h2>💱 Buy PGGC</h2>
+    <p>Available now on PancakeSwap.</p>
+    <a class="button" href="[YOUR_PANCAKESWAP_LINK]" target="_blank">Buy on PancakeSwap</a>
+    <p>✅ 100% LP Locked | ❌ No Team Dump | 🐷 Transparent Launch</p>
+  </section>
 
-  <h2>🎁 Airdrop</h2>
-  <p>Join our Facebook page and Telegram to qualify!</p>
-  <p>📺 Watch our video → 📩 Message us on Telegram → 💰 Receive PGGC</p>
+  <section id="airdrop">
+    <h2>🎁 Airdrop</h2>
+    <p>Join our Facebook page and Telegram to receive PGGC airdrop!</p>
+    <ul>
+      <li>✅ Follow us</li>
+      <li>✅ Share PGGC video</li>
+      <li>✅ Submit BSC wallet</li>
+      <li>💸 Receive PGGC in wallet</li>
+    </ul>
+  </section>
 
-  <h2>🚀 Roadmap</h2>
-  <ul>
-    <li>✅ Token Launch</li>
-    <li>🔒 LP Lock</li>
-    <li>📢 Airdrop Campaign</li>
-    <li>📈 Listing on CoinSniper & DEXTools</li>
-    <li>🌐 Website & Chart Listings</li>
-    <li>🎯 1000+ Holders</li>
-  </ul>
+  <section id="roadmap">
+    <h2>🚀 Roadmap</h2>
+    <ul>
+      <li>✅ Token Launch</li>
+      <li>🔐 Liquidity Lock (1 Month)</li>
+      <li>🎁 Airdrop Campaign</li>
+      <li>📢 Telegram & Twitter Growth</li>
+      <li>📈 CoinSniper & DEXTools Listing</li>
+      <li>🌐 Website + Logo on BSCScan</li>
+      <li>🔥 1000+ Holders Goal</li>
+    </ul>
+  </section>
 
-  <h2>📲 Join the Community</h2>
-  <p><a href="https://t.me/yourtelegramgroup" class="button">Telegram</a></p>
-  <p><a href="https://twitter.com/yourtwitter" class="button">Twitter</a></p>
-  <p><a href="https://facebook.com/yourpage" class="button">Facebook</a></p>
-</section>
+  <section id="community">
+    <h2>📲 Join the Community</h2>
+    <div class="socials">
+      <a href="https://t.me/YOURTELEGRAM" target="_blank">Telegram</a>
+      <a href="https://twitter.com/YOURTWITTER" target="_blank">Twitter</a>
+      <a href="https://facebook.com/YOURPAGE" target="_blank">Facebook</a>
+    </div>
+  </section>
 
-<footer>
-  &copy; 2025 Piggy Gold Coin | Built with 🐷 and BNB
-</footer>
+  <footer>
+    &copy; 2025 Piggy Gold Coin | Built on BNB Chain with 🐷 and 💛
+  </footer>
 
 </body>
 </html>
