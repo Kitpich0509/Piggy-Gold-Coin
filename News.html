@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News Posts - PGGC</title>
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f2f2f2;
+  }
+
+  h1 {
+    text-align: center;
+    padding: 20px;
+    color: #333;
+  }
+
+  .news-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px;
+  }
+
+  .news-card {
+    background: #fff;
+    border-radius: 10px;
+    margin: 15px;
+    width: 300px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: #222;
+  }
+
+  .news-card:hover {
+    transform: scale(1.03);
+  }
+
+  .news-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .news-content {
+    padding: 15px;
+  }
+
+  .news-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .news-desc {
+    font-size: 14px;
+    color: #666;
+  }
+
+  @media (max-width: 600px) {
+    .news-card {
+      width: 90%;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<h1>📢 Latest News from PGGC</h1>
+
+<div class="news-container">
+
+  <a href="https://example.com/article1" class="news-card" target="_blank">
+    <img src="news1.jpg" alt="News Image 1">
+    <div class="news-content">
+      <div class="news-title">PGGC Surges 100% in First Week 🚀</div>
+      <div class="news-desc">Investors rush into Piggy Gold Coin after community-driven rally...</div>
+    </div>
+  </a>
+
+  <a href="https://example.com/article2" class="news-card" target="_blank">
+    <img src="news2.jpg" alt="News Image 2">
+    <div class="news-content">
+      <div class="news-title">Airdrop Update: 5,000 PGGC Claimed 🎁</div>
+      <div class="news-desc">Massive airdrop success — more surprises ahead for PGGC holders!</div>
+    </div>
+  </a>
+
+  <a href="https://example.com/article3" class="news-card" target="_blank">
+    <img src="news3.jpg" alt="News Image 3">
+    <div class="news-content">
+      <div class="news-title">PGGC Listed on PancakeSwap 💱</div>
+      <div class="news-desc">Now live! Trade PGGC on BNB Chain with locked liquidity and zero tax.</div>
+    </div>
+  </a>
+
+</div>
+
+</body>
+</html>
