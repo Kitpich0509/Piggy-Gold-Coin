@@ -1,180 +1,159 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Phone Number Formatter</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+  <div class="wrapper">
+    <!-- Tool Container -->
+    <div class="container">
+      <h2>📱 Phone Number Formatter</h2>
+      <input type="text" id="phoneInput" placeholder="Paste or enter phone number">
+      <div class="button-group">
+        <button onclick="pasteAndFormat()">📋 Paste</button>
+        <button onclick="copyToClipboard()">📤 Copy</button>
+      </div>
+      <div id="toast" class="toast">Copied!</div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>©Pich's Tool 2025</p>
+
+      <!-- Ad Container -->
+      <div class="ad-container">
+        <script type="text/javascript">
+          atOptions = {
+            'key' : '8cee51417b7eed646d0e12a8fe327e13',
+            'format' : 'iframe',
+            'height' : 150,
+            'width' : 200,
+            'params' : {}
+          };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/8cee51417b7eed646d0e12a8fe327e13/invoke.js"></script>
+      </div>
+    </footer>
+  </div>
+
   <style>
     body { 
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
       background: linear-gradient(135deg, #74ebd5, #9face6);
-      min-height: 100vh;
-      display: flex; 
-      flex-direction: column;
-      justify-content: center; 
-      align-items: center;
       margin: 0;
-      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
     }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
+    }
+
     .container {
       background: white;
-      padding: 25px;
+      padding: 30px;
       border-radius: 16px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
       text-align: center;
       width: 100%;
-      max-width: 400px;
-      position: relative;
+      margin-bottom: 20px; /* space before ad */
     }
-    h2 { 
-      margin-bottom: 15px; 
-      color: #333;
-      font-size: 1.4rem;
-    }
-    input { 
+
+    input {
       width: 100%;
-      padding: 12px; 
-      font-size: 16px; 
-      margin: 15px 0; 
-      text-align: center; 
-      border: 2px solid #ddd; 
-      border-radius: 8px; 
-      transition: border 0.3s;
-      box-sizing: border-box;
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
     }
-    input:focus {
-      border-color: #007bff;
-      outline: none;
-    }
+
     .button-group {
       display: flex;
+      justify-content: space-around;
       gap: 10px;
-      flex-wrap: wrap;
     }
-    button { 
+
+    button {
       flex: 1;
-      padding: 12px; 
-      font-size: 15px; 
-      cursor: pointer; 
-      border: none; 
-      border-radius: 8px; 
-      background: #007bff; 
-      color: white; 
-      font-weight: bold;
-      transition: background 0.3s, transform 0.2s;
-    }
-    button:hover { 
-      background: #0056b3; 
-      transform: translateY(-2px);
-    }
-    button:active {
-      transform: translateY(0);
-    }
-    .toast {
-      visibility: hidden;
-      min-width: 200px;
-      background: #28a745;
-      color: white;
-      text-align: center;
-      border-radius: 8px;
       padding: 12px;
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      opacity: 0;
-      transition: opacity 0.5s, visibility 0.5s;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
     }
-    .toast.show {
-      visibility: visible;
-      opacity: 1;
+
+    button:first-child {
+      background-color: #007bff;
+      color: white;
     }
+
+    button:last-child {
+      background-color: #0d6efd;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
     footer {
       text-align: center;
-      margin-top: 20px;
-      color: white;
-      font-size: 14px;
+      width: 100%;
     }
+
     .ad-container {
       margin-top: 20px;
       display: flex;
       justify-content: center;
-    }
-    iframe {
-      max-width: 100% !important;
+      align-items: center;
+      width: 100%;
     }
 
-    /* Mobile adjustments */
-    @media (max-width: 480px) {
-      h2 {
-        font-size: 1.2rem;
+    .ad-container iframe {
+      max-width: 100% !important;
+      height: auto !important;
+      border: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
       }
+
       button {
-        font-size: 14px;
-        padding: 10px;
-      }
-      input {
         font-size: 14px;
         padding: 10px;
       }
     }
   </style>
-</head>
-<body>
-  <div class="container">
-    <h2>📱 Phone Number Formatter</h2>
-    <input type="text" id="phoneInput" placeholder="Paste or enter phone number">
-    <div class="button-group">
-      <button onclick="pasteAndFormat()">📋 Paste</button>
-      <button onclick="copyToClipboard()">📤 Copy</button>
-    </div>
-    <div id="toast" class="toast">Copied!</div>
-  </div>
-
-  <div class="ad-container">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : '8cee51417b7eed646d0e12a8fe327e13',
-        'format' : 'iframe',
-        'height' : 150,
-        'width' : 200,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/8cee51417b7eed646d0e12a8fe327e13/invoke.js"></script>
-  </div>
-
-  <footer>
-    <p>© Pich's Tool 2025</p>
-  </footer>
 
   <script>
-    function formatNumber(input) {
-      return input.replace(/[^0-9]/g, ''); // keep only digits
+    function formatNumber(num) {
+      return num.replace(/\D/g, ''); // remove non-digits
     }
 
-    function pasteAndFormat() {
-      navigator.clipboard.readText().then(text => {
-        let formatted = formatNumber(text);
-        document.getElementById('phoneInput').value = formatted;
-      }).catch(err => showToast('Clipboard access denied'));
+    async function pasteAndFormat() {
+      try {
+        const text = await navigator.clipboard.readText();
+        const formatted = formatNumber(text);
+        document.getElementById("phoneInput").value = formatted;
+      } catch (err) {
+        alert("Failed to read clipboard: " + err);
+      }
     }
 
     function copyToClipboard() {
-      let text = document.getElementById('phoneInput').value;
-      navigator.clipboard.writeText(text).then(() => {
-        showToast('Copied: ' + text);
-      }).catch(err => showToast('Failed to copy'));
-    }
+      const input = document.getElementById("phoneInput");
+      input.select();
+      document.execCommand("copy");
 
-    function showToast(message) {
-      let toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.className = 'toast show';
-      setTimeout(() => { toast.className = 'toast'; }, 2500);
+      const toast = document.getElementById("toast");
+      toast.style.display = "block";
+      setTimeout(() => { toast.style.display = "none"; }, 2000);
     }
   </script>
 </body>
-</html>
