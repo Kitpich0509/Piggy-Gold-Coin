@@ -3,29 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>Phone Number Formatter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { 
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
       background: linear-gradient(135deg, #74ebd5, #9face6);
-      height: 100vh;
+      min-height: 100vh;
       display: flex; 
+      flex-direction: column;
       justify-content: center; 
       align-items: center;
       margin: 0;
+      padding: 10px;
     }
     .container {
       background: white;
-      padding: 30px;
+      padding: 25px;
       border-radius: 16px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
       text-align: center;
-      width: 350px;
-      max-width: 90%;
+      width: 100%;
+      max-width: 400px;
       position: relative;
     }
     h2 { 
-      margin-bottom: 20px; 
+      margin-bottom: 15px; 
       color: #333;
+      font-size: 1.4rem;
     }
     input { 
       width: 100%;
@@ -36,6 +40,7 @@
       border: 2px solid #ddd; 
       border-radius: 8px; 
       transition: border 0.3s;
+      box-sizing: border-box;
     }
     input:focus {
       border-color: #007bff;
@@ -43,8 +48,8 @@
     }
     .button-group {
       display: flex;
-      justify-content: space-between;
       gap: 10px;
+      flex-wrap: wrap;
     }
     button { 
       flex: 1;
@@ -86,6 +91,35 @@
       visibility: visible;
       opacity: 1;
     }
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      color: white;
+      font-size: 14px;
+    }
+    .ad-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    iframe {
+      max-width: 100% !important;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.2rem;
+      }
+      button {
+        font-size: 14px;
+        padding: 10px;
+      }
+      input {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -98,6 +132,23 @@
     </div>
     <div id="toast" class="toast">Copied!</div>
   </div>
+
+  <div class="ad-container">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '8cee51417b7eed646d0e12a8fe327e13',
+        'format' : 'iframe',
+        'height' : 150,
+        'width' : 200,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/8cee51417b7eed646d0e12a8fe327e13/invoke.js"></script>
+  </div>
+
+  <footer>
+    <p>© Pich's Tool 2025</p>
+  </footer>
 
   <script>
     function formatNumber(input) {
@@ -125,18 +176,5 @@
       setTimeout(() => { toast.className = 'toast'; }, 2500);
     }
   </script>
-  </br>
-<foot> <p> ©Pich's Tool 2025 </p>   </br> <div>
-  <script type="text/javascript">
-	atOptions = {
-		'key' : '8cee51417b7eed646d0e12a8fe327e13',
-		'format' : 'iframe',
-		'height' : 150,
-		'width' : 200,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/8cee51417b7eed646d0e12a8fe327e13/invoke.js"></script> </div>
-</foot>
 </body>
 </html>
