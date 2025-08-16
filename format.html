@@ -21,6 +21,7 @@
       text-align: center;
       width: 350px;
       max-width: 90%;
+      position: relative;
     }
     h2 { 
       margin-bottom: 20px; 
@@ -64,6 +65,27 @@
     button:active {
       transform: translateY(0);
     }
+    .toast {
+      visibility: hidden;
+      min-width: 200px;
+      background: #28a745;
+      color: white;
+      text-align: center;
+      border-radius: 8px;
+      padding: 12px;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 0.5s, visibility 0.5s;
+    }
+    .toast.show {
+      visibility: visible;
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -74,6 +96,7 @@
       <button onclick="pasteAndFormat()">📋 Paste</button>
       <button onclick="copyToClipboard()">📤 Copy</button>
     </div>
+    <div id="toast" class="toast">Copied!</div>
   </div>
 
   <script>
@@ -85,16 +108,24 @@
       navigator.clipboard.readText().then(text => {
         let formatted = formatNumber(text);
         document.getElementById('phoneInput').value = formatted;
-      }).catch(err => alert('Clipboard access denied'));
+      }).catch(err => showToast('Clipboard access denied'));
     }
 
     function copyToClipboard() {
       let text = document.getElementById('phoneInput').value;
       navigator.clipboard.writeText(text).then(() => {
-        alert('Copied: ' + text);
-      }).catch(err => alert('Failed to copy'));
+        showToast('Copied: ' + text);
+      }).catch(err => showToast('Failed to copy'));
+    }
+
+    function showToast(message) {
+      let toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = 'toast show';
+      setTimeout(() => { toast.className = 'toast'; }, 2500);
     }
   </script>
-<foot> <p> ©Pich's Tool 2025
+  </br>
+<foot> <p> ©Pich's Tool 2025 </p> </foot> 
 </body>
 </html>
