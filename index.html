@@ -10,88 +10,136 @@
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #f9f9f9;
+      background: #fafafa;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #FFD700, #ffb347);
+      text-align: center;
+      padding: 60px 20px;
       color: #222;
     }
 
-    header {
-      background: #FFD700;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
     header img {
-      width: 100px;
+      width: 120px;
       height: auto;
     }
 
     header h1 {
-      margin-top: 10px;
-      font-size: 32px;
+      margin: 15px 0 5px;
+      font-size: 36px;
+      font-weight: 700;
     }
 
+    header p {
+      font-size: 18px;
+      font-weight: 500;
+      color: #444;
+    }
+
+    /* NAVIGATION */
     nav {
       background: #333;
-      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       display: inline-block;
-      padding: 14px 20px;
+      padding: 15px 25px;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s;
     }
 
     nav a:hover {
-      background: #555;
+      background: #FFD700;
+      color: #222;
     }
 
+    /* SECTIONS */
     section {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 20px;
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 30px;
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
 
     h2 {
       color: #d4af37;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 5px;
-    }
-
-    .button {
-      background: #ff9900;
-      color: white;
-      padding: 12px 20px;
-      margin: 10px 0;
-      display: inline-block;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-    }
-
-    .socials a {
-      margin-right: 10px;
-      text-decoration: none;
-      color: #555;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      color: #888;
-      font-size: 14px;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 8px;
     }
 
     ul {
       padding-left: 20px;
     }
 
-    @media (max-width: 600px) {
+    /* BUTTONS */
+    .button {
+      background: linear-gradient(135deg, #ff9900, #ff6600);
+      color: white;
+      padding: 12px 22px;
+      margin: 12px 0;
+      display: inline-block;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    /* SOCIAL LINKS */
+    .socials a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .socials a:hover {
+      color: #ff6600;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #666;
+      font-size: 14px;
+      margin-top: 20px;
+      background: #f0f0f0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
       header h1 {
-        font-size: 24px;
+        font-size: 26px;
+      }
+      header img {
+        width: 90px;
+      }
+      nav a {
+        padding: 12px 15px;
+        font-size: 14px;
+      }
+      section {
+        margin: 20px;
+        padding: 20px;
       }
     }
   </style>
@@ -140,16 +188,17 @@
     </ul>
   </section>
 
+  <!-- Ads script stays -->
   <script type="text/javascript">
-	atOptions = {
-		'key' : '8cee51417b7eed646d0e12a8fe327e13',
-		'format' : 'iframe',
-		'height' : 250,
-		'width' : 300,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/8cee51417b7eed646d0e12a8fe327e13/invoke.js"></script>
+    atOptions = {
+      'key' : '8cee51417b7eed646d0e12a8fe327e13',
+      'format' : 'iframe',
+      'height' : 250,
+      'width' : 300,
+      'params' : {}
+    };
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/8cee51417b7eed646d0e12a8fe327e13/invoke.js"></script>
 
   <section id="roadmap">
     <h2>🚀 Roadmap</h2>
@@ -172,16 +221,6 @@
       <a href="https://facebook.com/YOURPAGE" target="_blank">Facebook</a>
     </div>
   </section>
-	<script type="text/javascript">
-	atOptions = {
-		'key' : '8cee51417b7eed646d0e12a8fe327e13',
-		'format' : 'iframe',
-		'height' : 250,
-		'width' : 300,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/8cee51417b7eed646d0e12a8fe327e13/invoke.js"></script>
 
   <footer>
     &copy; 2025 Piggy Gold Coin | Built on BNB Chain with 🐷 and 💛
