@@ -6,6 +6,17 @@
   <title>Currency Converter — Live Ticker</title>
     <link rel="icon" href="E85DBBA7-4F9D-40AD-888F-F5CA98C83011.png" type="image/png" />
   <style>
+    body {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  align-items: center;    /* center horizontally */
+  justify-content: flex-start; /* start from top */
+  background: linear-gradient(135deg,var(--bg1),var(--bg2));
+  padding: 24px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
     :root{
       --brand:#2193b0;
       --card:#fff;
@@ -136,23 +147,18 @@
     }
 
 .ads {
-  position: fixed;         /* stick to bottom */
-  bottom: 16px;            /* small gap from bottom */
-  left: 50%;               /* center horizontally */
-  transform: translateX(-50%); /* actually center it */
-  width: 90%;              /* almost full width on mobile */
-  max-width: 480px;        /* same max-width as your container */
+  width: 100%;
+  max-width: 480px;    /* match main container */
+  margin-top: 16px;    /* spacing from container */
   padding: 12px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
   text-align: center;
   font-weight: 700;
   color: #2193b0;
   font-size: 16px;
-  z-index: 9999;
 }
-
 
 
 
