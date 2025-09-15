@@ -170,6 +170,25 @@
   </div>
 
   <script>
+const currencyFlags = {
+  USD: "🇺🇸",
+  EUR: "🇪🇺",
+  GBP: "🇬🇧",
+  JPY: "🇯🇵",
+  KHR: "🇰🇭",
+  THB: "🇹🇭",
+  VND: "🇻🇳",
+  CNY: "🇨🇳",
+  KRW: "🇰🇷",
+  AUD: "🇦🇺",
+  CAD: "🇨🇦",
+  SGD: "🇸🇬",
+  PHP: "🇵🇭",
+  MYR: "🇲🇾",
+  INR: "🇮🇳"
+};
+
+    
     // API base (open, no key)
     const apiBase = 'https://open.er-api.com/v6/latest/';
     let currentRates = {}; // rates from last fetch (base = selected from currency)
@@ -188,8 +207,9 @@
 
         // populate selects
         keys.forEach(k => {
-          fromEl.insertAdjacentHTML('beforeend', `<option value="${k}">${k}</option>`);
-          toEl.insertAdjacentHTML('beforeend', `<option value="${k}">${k}</option>`);
+       let flag = currencyFlags[k] ? currencyFlags[k] + ' ' : '';
+fromEl.insertAdjacentHTML('beforeend', `<option value="${k}">${flag}${k}</option>`);
+toEl.insertAdjacentHTML('beforeend', `<option value="${k}">${flag}${k}</option>`);
         });
 
         fromEl.value = 'USD';
