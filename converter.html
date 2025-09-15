@@ -7,15 +7,14 @@
     <link rel="icon" href="E85DBBA7-4F9D-40AD-888F-F5CA98C83011.png" type="image/png" />
   <style>
 body {
-  
   display: flex;
-  flex-direction: column; /* stack container + ad vertically */
-  align-items: center;    /* center horizontally */
+  flex-direction: column;   /* stack vertically */
+  align-items: center;      /* center horizontally */
   justify-content: flex-start; /* start from top */
-  background: linear-gradient(135deg,var(--bg1),var(--bg2));
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
   padding: 24px;
-  min-height: 100vh;
   box-sizing: border-box;
+  min-height: auto;          /* let body expand with content */
 }
 
 
@@ -34,17 +33,16 @@ body {
       padding:24px;
     }
 
-    .container{
-      width:100%;
-      max-width:480px;
-      background:var(--card);
-      border-radius:18px;
-      box-shadow:0 12px 30px rgba(0,0,0,0.18);
-      padding:22px;
-      box-sizing:border-box;
-      text-align:center;
-    }
-
+.container {
+  width: 100%;
+  max-width: 480px;
+  background: var(--card);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+  padding: 22px;
+  box-sizing: border-box;
+  text-align: center;
+}
     h1{
       margin:6px 0 12px;
       color:var(--brand);
@@ -151,7 +149,7 @@ body {
 .ads {
   width: 100%;
   max-width: 480px;
-  margin-top: 24px; /* space between container and ad */
+  margin-top: 16px;
   padding: 12px;
   background: #fff;
   border-radius: 12px;
@@ -161,8 +159,6 @@ body {
   color: #2193b0;
   font-size: 16px;
 }
-
-
 
   </style>
 </head>
@@ -483,10 +479,13 @@ const currencyFlags = {
       startPeriodic();
     })();
   </script>
-<div class="ads">
-  <p>🔥 Your Ad Here! 🔥</p>
-  <script async="async" data-cfasync="false" src="//pl27178605.revenuecpmgate.com/6ce741fdce53e6f494dfb3616fb300da/invoke.js"></script>
-<div id="container-6ce741fdce53e6f494dfb3616fb300da"></div>
+<div class="ads-wrapper" style="position: relative; width: 100%; max-width: 480px;">
+  <div class="ads">
+    <p>🔥 Your Ad Here! 🔥</p>
+    <script async="async" data-cfasync="false" src="//pl27178605.revenuecpmgate.com/.../invoke.js"></script>
+    <div id="container-6ce741fdce53e6f494dfb3616fb300da"></div>
+  </div>
 </div>
+
 </body>
 </html>
