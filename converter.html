@@ -136,18 +136,23 @@
     }
 
 .ads {
-  width: 100%;
-  max-width: 480px;
-  margin-top: 16px;
+  position: fixed;      /* fix it to the viewport */
+  bottom: 0;            /* stick to bottom */
+  left: 0;              /* start from left */
+  width: 100%;          /* full width */
+  max-width: 480px;     /* optional, same as container */
+  margin: 0 auto;       /* center horizontally */
   padding: 12px;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.12);
   text-align: center;
   font-weight: 700;
   color: #2193b0;
   font-size: 16px;
+  z-index: 9999;        /* make sure it stays above everything */
 }
+
 
 
   </style>
