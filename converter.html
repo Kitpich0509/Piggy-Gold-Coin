@@ -1,203 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Currency Converter</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Currency Converter — Live Ticker</title>
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: linear-gradient(135deg, #2193b0, #6dd5ed);
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    :root{
+      --brand:#2193b0;
+      --card:#fff;
+      --bg1:#2193b0;
+      --bg2:#6dd5ed;
     }
-    .container {
-      background: #fff;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      width: 90%;
-      max-width: 420px;
-      text-align: center;
+    html,body{height:100%;margin:0;font-family:'Segoe UI',Tahoma,Arial;}
+    body{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,var(--bg1),var(--bg2));
+      padding:24px;
     }
-    h1 {
-      font-size: 24px;
-      color: #2193b0;
-      margin-bottom: 10px;
+
+    .container{
+      width:100%;
+      max-width:480px;
+      background:var(--card);
+      border-radius:18px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.18);
+      padding:22px;
+      box-sizing:border-box;
+      text-align:center;
     }
+
+    h1{
+      margin:6px 0 12px;
+      color:var(--brand);
+      font-size:22px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+
+    /* running ticker */
+    .ticker-wrapper{
+      width:100%;
+      overflow:hidden;
+      white-space:nowrap;
+      margin:6px 0 18px;
+      box-sizing:border-box;
+      border-radius:10px;
+      background:linear-gradient(90deg, rgba(33,147,176,0.06), rgba(109,213,237,0.04));
+      padding:8px 6px;
+      border:1px solid rgba(33,147,176,0.08);
+    }
+
     .ticker {
-      overflow: hidden;
-      white-space: nowrap;
-      box-sizing: border-box;
-      margin-bottom: 20px;
+      display:inline-block;
+      padding-left:100%;
+      /* start off-screen */
+      animation: scroll-left 12s linear infinite;
+      font-weight:600;
+      color:#0f4a57;
+      font-size:14px;
+      align-items:center;
     }
-    .ticker span {
-      display: inline-block;
-      padding-left: 100%;
-      animation: ticker 12s linear infinite;
-      font-size: 16px;
-      font-weight: bold;
-      color: #176a80;
-    }
-    @keyframes ticker {
-      0%   { transform: translateX(0); }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0%); }
       100% { transform: translateX(-100%); }
     }
-    .input-group {
-      margin-bottom: 15px;
-      text-align: left;
+
+    .live-dot {
+      display:inline-block;
+      width:12px;height:12px;border-radius:50%;
+      margin-left:8px;
+      vertical-align:middle;
+      position:relative;
+      background:#2ecc71; /* green */
+      box-shadow:0 0 6px rgba(46,204,113,0.9);
+      animation: pulse 1.4s infinite;
     }
-    label {
-      font-size: 14px;
-      color: #333;
-      font-weight: bold;
+    @keyframes pulse {
+      0% { transform: scale(1); opacity:1; }
+      50% { transform: scale(1.3); opacity:0.7; }
+      100% { transform: scale(1); opacity:1; }
     }
+
+    /* converter card */
+    .form {
+      text-align:left;
+      gap:12px;
+      display:grid;
+      grid-template-columns:1fr;
+    }
+    label { font-size:13px;color:#333;font-weight:700;margin-bottom:6px; display:block; }
     input, select {
-      width: 100%;
-      padding: 12px;
-      margin-top: 6px;
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      font-size: 16px;
-      outline: none;
-      transition: 0.2s;
+      width:100%;
+      padding:12px;
+      border-radius:10px;
+      border:1px solid #e6eef2;
+      font-size:15px;
+      box-sizing:border-box;
+      outline:none;
     }
-    input:focus, select:focus {
-      border-color: #2193b0;
+    input:focus, select:focus { border-color:var(--brand); box-shadow:0 4px 12px rgba(33,147,176,0.06); }
+    .btn {
+      margin-top:12px;
+      width:100%;
+      padding:12px;
+      background:var(--brand);
+      color:#fff;
+      border:none;
+      border-radius:10px;
+      font-size:16px;
+      cursor:pointer;
+      font-weight:700;
     }
-    button {
-      width: 100%;
-      padding: 14px;
-      background: #2193b0;
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-      margin-top: 10px;
+    .result {
+      margin-top:14px;
+      font-size:18px;
+      font-weight:800;
+      text-align:center;
+      color:#0b3b43;
+      padding:10px;
+      border-radius:10px;
+      background:#f3fdff;
+      border:1px dashed rgba(33,147,176,0.12);
     }
-    button:hover {
-      background: #176a80;
-    }
-    #result {
-      margin-top: 20px;
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-      background: #f1f9ff;
-      padding: 12px;
-      border-radius: 10px;
-      border: 2px dashed #2193b0;
+
+    /* small screens */
+    @media (max-width:420px){
+      .ticker { font-size:13px; animation-duration:14s; }
+      h1 { font-size:20px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>💱 Currency Converter</h1>
-    <div class="ticker">
-      <span>📈 This is real-time exchange rate...</span>
+
+    <!-- Running sentence / ticker under H1 -->
+    <div class="ticker-wrapper" aria-hidden="false">
+      <div id="ticker" class="ticker">
+        Loading live exchange rate... <span class="live-dot" id="liveDot"></span>
+      </div>
     </div>
 
-    <div class="input-group">
-      <label for="amount">Enter Amount</label>
-      <input type="number" id="amount" placeholder="e.g. 100" />
-    </div>
+    <!-- Converter form -->
+    <div class="form">
+      <div>
+        <label for="amount">Amount</label>
+        <input id="amount" type="number" placeholder="e.g. 100" value="100" />
+      </div>
 
-    <div class="input-group">
-      <label for="from">From Currency</label>
-      <select id="from"></select>
-    </div>
+      <div>
+        <label for="from">From</label>
+        <select id="from"></select>
+      </div>
 
-    <div class="input-group">
-      <label for="to">To Currency</label>
-      <select id="to"></select>
-    </div>
+      <div>
+        <label for="to">To</label>
+        <select id="to"></select>
+      </div>
 
-    <button onclick="convert()">🔄 Convert</button>
-    <p id="result">Result will appear here</p>
+      <button class="btn" id="convertBtn">🔄 Convert</button>
+
+      <div id="result" class="result">Result will appear here</div>
+    </div>
   </div>
 
   <script>
-    const apiUrl = "https://open.er-api.com/v6/latest/USD";
-    let rates = {};
+    // API base (open, no key)
+    const apiBase = 'https://open.er-api.com/v6/latest/';
+    let currentRates = {}; // rates from last fetch (base = selected from currency)
 
-    // Map currencies to emoji flags
-    const currencyFlags = {
-      USD: "🇺🇸",
-      EUR: "🇪🇺",
-      GBP: "🇬🇧",
-      JPY: "🇯🇵",
-      KHR: "🇰🇭",
-      THB: "🇹🇭",
-      VND: "🇻🇳",
-      CNY: "🇨🇳",
-      KRW: "🇰🇷",
-      AUD: "🇦🇺",
-      CAD: "🇨🇦",
-      SGD: "🇸🇬",
-      PHP: "🇵🇭",
-      MYR: "🇲🇾",
-      INR: "🇮🇳"
-      // you can add more if you like
-    };
-
+    // load currencies (using USD as initial base)
     async function loadCurrencies() {
       try {
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-        rates = data.rates;
+        const res = await fetch(apiBase + 'USD');
+        const json = await res.json();
+        if (json.result !== 'success') throw new Error('API error');
+        const rates = json.rates;
+        const keys = Object.keys(rates).sort();
 
-        let from = document.getElementById("from");
-        let to = document.getElementById("to");
+        const fromEl = document.getElementById('from');
+        const toEl = document.getElementById('to');
 
-        Object.keys(rates).forEach(cur => {
-          let flag = currencyFlags[cur] ? currencyFlags[cur] : "🏳️";
-          from.innerHTML += `<option value="${cur}">${flag} ${cur}</option>`;
-          to.innerHTML += `<option value="${cur}">${flag} ${cur}</option>`;
+        // populate selects
+        keys.forEach(k => {
+          fromEl.insertAdjacentHTML('beforeend', `<option value="${k}">${k}</option>`);
+          toEl.insertAdjacentHTML('beforeend', `<option value="${k}">${k}</option>`);
         });
 
-        from.value = "USD";
-        to.value = "KHR";
-      } catch (error) {
-        document.getElementById("result").innerText = "❌ Failed to load currencies.";
+        fromEl.value = 'USD';
+        toEl.value = 'KHR';
+
+        // load initial rates for ticker
+        await updateRatesAndTicker();
+      } catch (err) {
+        document.getElementById('ticker').textContent = '❌ Failed to load currencies.';
       }
     }
 
-    function convert() {
-      let amount = document.getElementById("amount").value;
-      let from = document.getElementById("from").value;
-      let to = document.getElementById("to").value;
-
-      if (amount === "" || amount <= 0) {
-        document.getElementById("result").innerText = "⚠️ Please enter a valid amount.";
-        return;
-      }
-
-      if (!rates[from] || !rates[to]) {
-        document.getElementById("result").innerText = "❌ Rates not available.";
-        return;
-      }
-
-      let usdAmount = amount / rates[from];
-      let result = usdAmount * rates[to];
-
-      // format with space as thousand separator
-      let formattedResult = new Intl.NumberFormat('fr-FR', {
+    // Helper: format numbers with space thousand separator, 2 decimals
+    function formatSpace(num) {
+      return new Intl.NumberFormat('fr-FR', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
-      }).format(result);
-
-      document.getElementById("result").innerText =
-        `${amount} ${from} = ${formattedResult} ${to}`;
+      }).format(num);
     }
 
-    loadCurrencies();
+    // update rates (fetch using base = from currency), then update ticker text
+    async function updateRatesAndTicker() {
+      try {
+        const from = document.getElementById('from').value || 'USD';
+        const to = document.getElementById('to').value || 'KHR';
+        const res = await fetch(apiBase + encodeURIComponent(from));
+        const json = await res.json();
+        if (json.result !== 'success') throw new Error('API error');
+        currentRates = json.rates; // rates relative to base 'from'
+
+        // If target rate exists, show live sentence
+        const rate = currentRates[to];
+        if (rate) {
+          // example: "Live: 1 USD = 4 010.94 KHR" with live dot
+          const formatted = formatSpace(rate);
+          const tickerText = `Live: 1 ${from} = ${formatted} ${to} `;
+          setTickerText(tickerText);
+        } else {
+          setTickerText('Live rate not available for selected pair.');
+        }
+      } catch (err) {
+        setTickerText('❌ Unable to fetch live rate.');
+      }
+    }
+
+    // set ticker content and restart animation (so text length restarts)
+    function setTickerText(text) {
+      const ticker = document.getElementById('ticker');
+      // include the live-dot HTML at end so the pulse remains
+      ticker.innerHTML = text + '<span class="live-dot" id="liveDot"></span>';
+      // restart CSS animation by cloning node (simple trick)
+      ticker.style.animation = 'none';
+      // Force reflow
+      void ticker.offsetWidth;
+      ticker.style.animation = null;
+    }
+
+    // Convert button behavior: uses currentRates (base = from)
+    function convertNow() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      const from = document.getElementById('from').value;
+      const to = document.getElementById('to').value;
+      const resultEl = document.getElementById('result');
+
+      if (!amount || amount <= 0) {
+        resultEl.textContent = '⚠️ Enter a valid amount';
+        return;
+      }
+      if (!currentRates || typeof currentRates[to] === 'undefined') {
+        resultEl.textContent = '❌ Rate not available — try again in a moment.';
+        return;
+      }
+
+      const rate = currentRates[to];
+      const converted = amount * rate;
+      resultEl.textContent = `${amount} ${from} = ${formatSpace(converted)} ${to}`;
+    }
+
+    // event listeners
+    document.getElementById('convertBtn').addEventListener('click', convertNow);
+
+    // when user changes pair, update rates & ticker immediately
+    document.getElementById('from').addEventListener('change', async () => {
+      // fetch rates using new base
+      await updateRatesAndTicker();
+    });
+    document.getElementById('to').addEventListener('change', async () => {
+      await updateRatesAndTicker();
+    });
+
+    // periodic updater: refresh rates & ticker every 10 seconds
+    let periodicId = null;
+    async function startPeriodic() {
+      if (periodicId) clearInterval(periodicId);
+      periodicId = setInterval(updateRatesAndTicker, 10000); // 10s
+    }
+
+    // initial load
+    (async function init(){
+      await loadCurrencies();
+      startPeriodic();
+    })();
   </script>
 </body>
 </html>
