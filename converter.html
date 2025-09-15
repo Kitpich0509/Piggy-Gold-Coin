@@ -57,18 +57,21 @@
   </div>
 
   <script>
-    const apiUrl = "https://api.exchangerate.host/latest";
+    const apiUrl = "https://open.er-api.com/v6/latest/USD"; // base USD
 
+    let rates = {};
+
+    // Load all currencies
     async function loadCurrencies() {
       try {
         const res = await fetch(apiUrl);
         const data = await res.json();
-        const currencies = Object.keys(data.rates);
+        rates = data.rates; // save all rates
 
         let from = document.getElementById("from");
         let to = document.getElementById("to");
 
-        currencies.forEach(cur => {
+        Object.keys(rates).forEach(cur => {
           from.innerHTML += `<option value="${cur}">${cur}</option>`;
           to.innerHTML += `<option value="${cur}">${cur}</option>`;
         });
@@ -80,7 +83,8 @@
       }
     }
 
-    async function convert() {
+    // Convert function
+    function convert() {
       let amount = document.getElementById("amount").value;
       let from = document.getElementById("from").value;
       let to = document.getElementById("to").value;
@@ -90,17 +94,17 @@
         return;
       }
 
-      try {
-        const res = await fetch(`${apiUrl}?base=${from}&symbols=${to}`);
-        const data = await res.json();
-        let rate = data.rates[to];
-        let result = (amount * rate).toFixed(2);
-
-        document.getElementById("result").innerText =
-          `${amount} ${from} = ${result} ${to}`;
-      } catch (error) {
-        document.getElementById("result").innerText = "❌ Conversion failed.";
+      if (!rates[from] || !rates[to]) {
+        document.getElementById("result").innerText = "❌ Rates not available.";
+        return;
       }
+
+      // Convert via USD as base
+      let usdAmount = amount / rates[from];
+      let result = (usdAmount * rates[to]).toFixed(2);
+
+      document.getElementById("result").innerText =
+        `${amount} ${from} = ${result} ${to}`;
     }
 
     loadCurrencies();
