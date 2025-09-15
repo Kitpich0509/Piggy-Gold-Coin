@@ -102,55 +102,60 @@
 
     <p id="result">Result will appear here</p>
   </div>
+<script>
+  const apiUrl = "https://open.er-api.com/v6/latest/USD";
+  let rates = {};
 
-  <script>
-    const apiUrl = "https://open.er-api.com/v6/latest/USD";
-    let rates = {};
+  async function loadCurrencies() {
+    try {
+      const res = await fetch(apiUrl);
+      const data = await res.json();
+      rates = data.rates;
 
-    async function loadCurrencies() {
-      try {
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-        rates = data.rates;
+      let from = document.getElementById("from");
+      let to = document.getElementById("to");
 
-        let from = document.getElementById("from");
-        let to = document.getElementById("to");
+      Object.keys(rates).forEach(cur => {
+        from.innerHTML += `<option value="${cur}">${cur}</option>`;
+        to.innerHTML += `<option value="${cur}">${cur}</option>`;
+      });
 
-        Object.keys(rates).forEach(cur => {
-          from.innerHTML += `<option value="${cur}">${cur}</option>`;
-          to.innerHTML += `<option value="${cur}">${cur}</option>`;
-        });
+      from.value = "USD";
+      to.value = "KHR";
+    } catch (error) {
+      document.getElementById("result").innerText = "❌ Failed to load currencies.";
+    }
+  }
 
-        from.value = "USD";
-        to.value = "KHR";
-      } catch (error) {
-        document.getElementById("result").innerText = "❌ Failed to load currencies.";
-      }
+  function convert() {
+    let amount = document.getElementById("amount").value;
+    let from = document.getElementById("from").value;
+    let to = document.getElementById("to").value;
+
+    if (amount === "" || amount <= 0) {
+      document.getElementById("result").innerText = "⚠️ Please enter a valid amount.";
+      return;
     }
 
-    function convert() {
-      let amount = document.getElementById("amount").value;
-      let from = document.getElementById("from").value;
-      let to = document.getElementById("to").value;
-
-      if (amount === "" || amount <= 0) {
-        document.getElementById("result").innerText = "⚠️ Please enter a valid amount.";
-        return;
-      }
-
-      if (!rates[from] || !rates[to]) {
-        document.getElementById("result").innerText = "❌ Rates not available.";
-        return;
-      }
-
-      let usdAmount = amount / rates[from];
-      let result = (usdAmount * rates[to]).toFixed(2);
-
-      document.getElementById("result").innerText =
-        `${amount} ${from} = ${result} ${to}`;
+    if (!rates[from] || !rates[to]) {
+      document.getElementById("result").innerText = "❌ Rates not available.";
+      return;
     }
 
-    loadCurrencies();
-  </script>
+    let usdAmount = amount / rates[from];
+    let result = usdAmount * rates[to];
+
+    // format with space as thousand separator
+    let formattedResult = new Intl.NumberFormat('fr-FR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(result);
+
+    document.getElementById("result").innerText =
+      `${amount} ${from} = ${formattedResult} ${to}`;
+  }
+
+  loadCurrencies();
+</script>
 </body>
 </html>
