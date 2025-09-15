@@ -171,22 +171,95 @@
 
   <script>
 const currencyFlags = {
-  USD: "🇺🇸",
-  EUR: "🇪🇺",
-  GBP: "🇬🇧",
-  JPY: "🇯🇵",
-  KHR: "🇰🇭",
-  THB: "🇹🇭",
-  VND: "🇻🇳",
-  CNY: "🇨🇳",
-  KRW: "🇰🇷",
-  AUD: "🇦🇺",
-  CAD: "🇨🇦",
-  SGD: "🇸🇬",
-  PHP: "🇵🇭",
-  MYR: "🇲🇾",
-  INR: "🇮🇳"
+  USD: "🇺🇸 (USD)",
+  EUR: "🇪🇺 (EUR)",
+  GBP: "🇬🇧 (GBP)",
+  JPY: "🇯🇵 (JPY)",
+  KHR: "🇰🇭 (KHR)",
+  THB: "🇹🇭 (THB)",
+  VND: "🇻🇳 (VND)",
+  CNY: "🇨🇳 (CNY)",
+  KRW: "🇰🇷 (KRW)",
+  AUD: "🇦🇺 (AUD)",
+  CAD: "🇨🇦 (CAD)",
+  SGD: "🇸🇬 (SGD)",
+  PHP: "🇵🇭 (PHP)",
+  MYR: "🇲🇾 (MYR)",
+  INR: "🇮🇳 (INR)",
+  CHF: "🇨🇭 (CHF)",
+  NZD: "🇳🇿 (NZD)",
+  SEK: "🇸🇪 (SEK)",
+  NOK: "🇳🇴 (NOK)",
+  DKK: "🇩🇰 (DKK)",
+  RUB: "🇷🇺 (RUB)",
+  ZAR: "🇿🇦 (ZAR)",
+  TRY: "🇹🇷 (TRY)",
+  BRL: "🇧🇷 (BRL)",
+  MXN: "🇲🇽 (MXN)",
+  ARS: "🇦🇷 (ARS)",
+  PLN: "🇵🇱 (PLN)",
+  IDR: "🇮🇩 (IDR)",
+  HKD: "🇭🇰 (HKD)",
+  TWD: "🇹🇼 (TWD)",
+  SAR: "🇸🇦 (SAR)",
+  AED: "🇦🇪 (AED)",
+  BGN: "🇧🇬 (BGN)",
+  CZK: "🇨🇿 (CZK)",
+  HUF: "🇭🇺 (HUF)",
+  ILS: "🇮🇱 (ILS)",
+  KWD: "🇰🇼 (KWD)",
+  OMR: "🇴🇲 (OMR)",
+  QAR: "🇶🇦 (QAR)",
+  RON: "🇷🇴 (RON)",
+  VEF: "🇻🇪 (VEF)",
+  COP: "🇨🇴 (COP)",
+  CLP: "🇨🇱 (CLP)",
+  PAB: "🇵🇦 (PAB)",
+  BOB: "🇧🇴 (BOB)",
+  PEN: "🇵🇪 (PEN)",
+  UYU: "🇺🇾 (UYU)",
+  LKR: "🇱🇰 (LKR)",
+  PKR: "🇵🇰 (PKR)",
+  EGP: "🇪🇬 (EGP)",
+  NGN: "🇳🇬 (NGN)",
+  MAD: "🇲🇦 (MAD)",
+  DZD: "🇩🇿 (DZD)",
+  TND: "🇹🇳 (TND)",
+  JOD: "🇯🇴 (JOD)",
+  LYD: "🇱🇾 (LYD)",
+  BHD: "🇧🇭 (BHD)",
+  BAM: "🇧🇦 (BAM)",
+  HRK: "🇭🇷 (HRK)",
+  ISK: "🇮🇸 (ISK)",
+  GEL: "🇬🇪 (GEL)",
+  KZT: "🇰🇿 (KZT)",
+  UAH: "🇺🇦 (UAH)",
+  RSD: "🇷🇸 (RSD)",
+  MKD: "🇲🇰 (MKD)",
+  LTL: "🇱🇹 (LTL)",
+  LVL: "🇱🇻 (LVL)",
+  EEK: "🇪🇪 (EEK)",
+  BMD: "🇧🇲 (BMD)",
+  FJD: "🇫🇯 (FJD)",
+  PGK: "🇵🇬 (PGK)",
+  PKR: "🇵🇰 (PKR)",
+  NPR: "🇳🇵 (NPR)",
+  KES: "🇰🇪 (KES)",
+  GHS: "🇬🇭 (GHS)",
+  XOF: "🏳️ (XOF)",
+  XAF: "🏳️ (XAF)",
+  XPF: "🏳️ (XPF)",
+  XCD: "🇦🇬 (XCD)",
+  BBD: "🇧🇧 (BBD)",
+  BZD: "🇧🇿 (BZD)",
+  TTD: "🇹🇹 (TTD)",
+  JMD: "🇯🇲 (JMD)",
+  WST: "🇼🇸 (WST)",
+  PGK: "🇵🇬 (PGK)",
+  SBD: "🇸🇧 (SBD)"
+  // add more rare currencies as needed
 };
+
 
     
     // API base (open, no key)
@@ -206,11 +279,12 @@ const currencyFlags = {
         const toEl = document.getElementById('to');
 
         // populate selects
-        keys.forEach(k => {
-       let flag = currencyFlags[k] ? currencyFlags[k] + ' ' : '';
-fromEl.insertAdjacentHTML('beforeend', `<option value="${k}">${flag}${k}</option>`);
-toEl.insertAdjacentHTML('beforeend', `<option value="${k}">${flag}${k}</option>`);
-        });
+        Object.keys(rates).forEach(code => {
+  let display = currencyFlags[code] ? currencyFlags[code] : code;
+  fromEl.insertAdjacentHTML('beforeend', `<option value="${code}">${display}</option>`);
+  toEl.insertAdjacentHTML('beforeend', `<option value="${code}">${display}</option>`);
+});
+
 
         fromEl.value = 'USD';
         toEl.value = 'KHR';
